@@ -1,0 +1,7 @@
+{
+  "name": "final-task-client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
