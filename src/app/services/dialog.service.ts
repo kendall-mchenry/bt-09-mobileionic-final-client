@@ -16,7 +16,15 @@ export class DialogService {
         title,
         message
     })).pipe(map(result => {
-        return result.value;
+      // This will account for if "Cancel" was clicked or the prmopt was empty.
+        if (result.cancelled == true || result.value == "") {
+          // console.log(result);
+          return null;
+        } else {
+          // console.log(result);
+          return result.value;
+        }
     }));
+    
 };
 }

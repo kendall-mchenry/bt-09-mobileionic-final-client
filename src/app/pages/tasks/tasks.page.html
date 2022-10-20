@@ -1,17 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Tasks</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Task List</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
 <div>
-  <h1>Incomplete</h1>
-    <ion-list *ngFor="let task of taskList">
-      <ion-item-sliding>
+  <ion-toolbar color="secondary">
+    <ion-title>Incomplete</ion-title>
+  </ion-toolbar>
+    <ion-list lines="full">
+      <ion-item-sliding *ngFor="let task of taskList">
         <ion-item *ngIf="task.taskCompleted == false">
-          <ion-checkbox slot="end" (ionChange)="toggleCompleted(task)"></ion-checkbox>
+          <ion-checkbox color="success" slot="end" (ionChange)="toggleCompleted(task)"></ion-checkbox>
           <ion-label>{{task.taskTitle}}</ion-label>
         </ion-item>
         <ion-item-options side="end">
@@ -24,11 +26,13 @@
 </div>
 
 <div>
-  <h1>Complete</h1>
-  <ion-list *ngFor="let task of taskList">
-    <ion-item-sliding>
+  <ion-toolbar color="secondary">
+    <ion-title>Complete</ion-title>
+  </ion-toolbar>
+  <ion-list lines="full">
+    <ion-item-sliding *ngFor="let task of taskList">
       <ion-item *ngIf="task.taskCompleted == true">
-        <ion-checkbox slot="end" checked="true" (ionChange)="toggleCompleted(task)"></ion-checkbox>
+        <ion-checkbox color="success" slot="end" checked="true" (ionChange)="toggleCompleted(task)"></ion-checkbox>
         <ion-label >{{task.taskTitle}}</ion-label>
       </ion-item>
       <ion-item-options side="end">
@@ -40,8 +44,8 @@
   </ion-list>
 </div>
 
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="newTaskPrompt()">
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-margin">
+  <ion-fab-button color="tertiary" (click)="newTaskPrompt()">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

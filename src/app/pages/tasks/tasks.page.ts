@@ -23,20 +23,27 @@ export class TasksPage implements OnInit {
   }
 
   // Dialog prompt to add a new task
-  // TO DO -- HOW TO HANDLE WHEN "CANCELED" IS CLICKED?
   newTaskPrompt() {
     this.dialogService.showPrompt('Add Task', 'New Task Title').subscribe(response => {
+      
+      if(response != null) {
         this.newTask.taskTitle = response;
 
         this.tasksService.createTask(this.newTask).subscribe(() => {
           window.location.reload();
-        })
+        }, error => {
+          console.log("Error: ", error);
+        });
+      } else {
+        return;
+      }
+        
     });
   }
 
   // To mark if task is complete/incomplete & reload the page
   toggleCompleted(editTask: Task) {
-    console.log("Clicked: " + editTask.taskTitle);
+    // console.log("Clicked: " + editTask.taskTitle);
     
     if(editTask.taskCompleted) {
       editTask.taskCompleted = false;
